@@ -4,60 +4,36 @@
 # ### pixnet get Article
 
 # In[2]:
-
-
 import requests
 from lxml import etree
 import pandas as pd
 from bs4 import BeautifulSoup
-
-
-# In[3]:
-
-
 import time
-
-
-# In[4]:
-
-
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 
 
 # In[13]:
-
-
 df = pd.read_csv("Pinex_bytags.csv")
 df = df.iloc[0:100,1:]
 df
 
 
 # In[12]:
-
-
 article_urls = df["article_url_list"].tolist()
 article_urls
 
 
 # In[43]:
-
-
-len(article_urls)
+print("1st"+len(article_urls))
 
 
 # In[44]:
-
-
 article_urls = set(article_urls)
-len(article_urls)
+print("2nd"+len(article_urls))
 
-
-# ### 6/8 13:35pm 
 
 # In[48]:
-
-
 def get_Article(urls):
     for i in urls:
         session = requests.Session()
@@ -79,15 +55,8 @@ def get_Article(urls):
         return article_title_2nd, article_content
 
 
-# In[51]:
-
-
-len(article_title_2nd_list)
-
 
 # In[49]:
-
-
 article_title_2nd_list = []
 article_content_list = []
 article_url_list_2nd = []
@@ -100,15 +69,8 @@ for i in article_urls:
         article_title_2nd_list.extend([article_title_2nd])
         article_content_list.extend([article_content])
         article_url_list_2nd.extend([i])
-#     article_author_list.extend(article_author)
-#     article_title_list.extend(article_title)
-#     article_url_list.extend(article_url)
-#     article_tags_list.extend(article_tags)
-
 
 # In[31]:
-
-
 df2 = pd.DataFrame()
 df2["article_url_list"] = article_url_list_2nd
 # df2["article_title"] = article_title_2nd_list
@@ -117,14 +79,9 @@ df2
 
 
 # In[32]:
-
-
 result = pd.merge(df, df2, on='article_url_list')
 result
 
 
 # In[28]:
-
-
-df.to_csv(r'text02.csv', mode='a', encoding='utf_8_sig')   #存成csv檔
-
+result.to_csv(r'pixnet_articles.csv', mode='a', encoding='utf_8_sig')
