@@ -25,19 +25,18 @@ from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 
 
-# In[6]:
+# In[13]:
 
 
 df = pd.read_csv("Pinex_bytags.csv")
-df = df.iloc[:,1:]
+df = df.iloc[0:100,1:]
 df
 
 
-# In[10]:
+# In[12]:
 
 
 article_urls = df["article_url_list"].tolist()
-article_urls = article_urls[0:1]
 article_urls
 
 
