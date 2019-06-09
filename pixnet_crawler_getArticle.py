@@ -80,8 +80,9 @@ df2
 
 # In[32]:
 result = pd.merge(df, df2, on='article_url_list')
-result
+print(result)
 
 
 # In[28]:
 result.to_csv(r'pixnet_articles.csv', mode='a', encoding='utf_8_sig')
+print("finished: 1 / 0-109")
