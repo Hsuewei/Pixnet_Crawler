@@ -15,7 +15,7 @@ from requests.packages.urllib3.util.retry import Retry
 
 # In[13]:
 df = pd.read_csv("Pinex_bytags.csv")
-df = df.iloc[0:100,1:]
+df = df.iloc[0:150,1:]
 df
 
 
@@ -25,12 +25,12 @@ article_urls
 
 
 # In[43]:
-print("1st"+len(article_urls))
+print(str(len(article_urls)))
 
 
 # In[44]:
-article_urls = set(article_urls)
-print("2nd"+len(article_urls))
+# article_urls = set(article_urls)
+# print("2nd"+len(article_urls))
 
 
 # In[48]:
@@ -85,4 +85,4 @@ print(result)
 
 # In[28]:
 result.to_csv(r'pixnet_articles.csv', mode='a', encoding='utf_8_sig')
-print("finished: 1 / 0-109")
+print("finished: 1 / 0-150")
